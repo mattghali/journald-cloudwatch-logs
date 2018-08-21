@@ -1,5 +1,5 @@
 job {
-    name 'journald-cloudwatch-logs-build'
+    name 'dumbo-journald-cloudwatch-logs-build'
     using 'TEMPLATE-autobuild'
     scm {
         git {
@@ -14,7 +14,7 @@ job {
     steps {
         shell 'rm -rf pkg'
         shell 'manta -v  -E ITERATION=\${BUILD_NUMBER}'
-        uploadDeb "pkg/journald-cloudwatch-logs.deb", ['xenial', 'bionic']
+        uploadDeb "pkg/dumbo-journald-cloudwatch-logs.deb", ['xenial', 'bionic']
     }
 }
 

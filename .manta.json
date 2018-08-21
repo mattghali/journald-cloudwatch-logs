@@ -16,7 +16,7 @@
         "(cd fpm; ./build_fpm.sh)"
     ],
     "extract": {
-        "source": "/build/src/code.justin.tv/dumbo/journald-cloudwatch-logs/fpm/pkg/journald-cloudwatch-logs.deb",
+        "source": "/build/src/code.justin.tv/dumbo/journald-cloudwatch-logs/fpm/pkg/dumbo-journald-cloudwatch-logs.deb",
         "destination": "pkg/"
     }
 }

@@ -1,0 +1,22 @@
+{
+    "image": "docker.internal.justin.tv/devtools/xenial/go1.10.3:latest",
+    "mount": "/build/src/code.justin.tv/dumbo/journald-cloudwatch-logs",
+    "env": [
+        "GOPATH=/build",
+        "PATH=/build/bin/:/usr/local/go/bin:$PATH"
+    ],
+    "setup": [
+        "apt-get install -y libsystemd-dev ruby-dev rubygems",
+        "gem install --no-ri --no-rdoc fpm"
+    ],
+    "build": [
+        "go build code.justin.tv/dumbo/journald-cloudwatch-logs",
+        "mkdir -p fpm/fpm_source/usr/local/dumbo/sbin",
+        "cp /build/src/code.justin.tv/dumbo/journald-cloudwatch-logs/journald-cloudwatch-logs fpm/fpm_source/usr/local/dumbo/sbin",
+        "(cd fpm; ./build_fpm.sh)"
+    ],
+    "extract": {
+        "source": "/build/src/code.justin.tv/dumbo/journald-cloudwatch-logs/fpm/pkg/journald-cloudwatch-logs.deb",
+        "destination": "pkg/"
+    }
+}

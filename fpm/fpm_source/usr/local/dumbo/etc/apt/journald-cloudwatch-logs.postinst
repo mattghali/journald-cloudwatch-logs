@@ -1,0 +1,5 @@
+if systemctl --quiet is-system-running; then
+    systemctl daemon-reload
+    systemctl enable journald-cloudwatch-logs.service
+    systemctl reload-or-restart journald-cloudwatch-logs
+fi

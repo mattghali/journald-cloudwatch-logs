@@ -10,14 +10,13 @@
         "gem install --no-ri --no-rdoc fpm"
     ],
     "build": [
-        "go env GOPATH",
         "go build code.justin.tv/dumbo/journald-cloudwatch-logs",
         "mkdir -p fpm/fpm_source/usr/local/dumbo/sbin",
         "cp /build/src/code.justin.tv/dumbo/journald-cloudwatch-logs/journald-cloudwatch-logs fpm/fpm_source/usr/local/dumbo/sbin",
         "(cd fpm; ./build_fpm.sh)"
     ],
     "extract": {
-        "source": "/build/src/code.justin.tv/dumbo/journald-cloudwatch-logs/fpm/journald-cloudwatch-logs.deb",
-        "destination": ".manta/"
+        "source": "/build/src/code.justin.tv/dumbo/journald-cloudwatch-logs/fpm/pkg/journald-cloudwatch-logs.deb",
+        "destination": "pkg/"
     }
 }

@@ -99,9 +99,9 @@ else
   exit 1
 fi
 
-CMD="fpm -s dir -t ${package_type} -n ${NAME:-${WORKSPACE}} -v ${VERSION:-$version} --iteration ${ITERATION} -a ${ARCH:-$arch} ${script_args} ${PKG_PARAMS} ${DEPS} ${MISC_PARAMS} ${COMMON_PARAMS} $extra_args -p ${WORKSPACE}/${NAME}.deb -C $source"
+mkdir pkg
+
+CMD="fpm -s dir -t ${package_type} -n ${NAME:-${WORKSPACE}} -v ${VERSION:-$version} --iteration ${ITERATION} -a ${ARCH:-$arch} ${script_args} ${PKG_PARAMS} ${DEPS} ${MISC_PARAMS} ${COMMON_PARAMS} $extra_args -p ${WORKSPACE}/pkg/ -C $source"
 echo "Running command: '${CMD}'"
 eval "${CMD}"
 
-mkdir pkg
-mv ${WORKSPACE}/${NAME}.deb pkg

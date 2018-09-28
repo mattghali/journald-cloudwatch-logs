@@ -1,4 +1,4 @@
-if systemctl --quiet is-system-running; then
+if systemctl show-environment &>/dev/null; then
     systemctl daemon-reload
     systemctl enable journald-cloudwatch-logs.service
     systemctl reload-or-restart journald-cloudwatch-logs
